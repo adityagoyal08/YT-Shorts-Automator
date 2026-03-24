@@ -63,7 +63,9 @@ Everything runs **locally on your machine**.
 
 No paid APIs.
 No external AI services.
-
+<p align="center">
+<img src="assets/full.png" width="80%" height="80%">
+</p>
 ---
 
 ## Features
