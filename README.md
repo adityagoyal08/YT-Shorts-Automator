@@ -43,7 +43,6 @@
 - [FAQ](#faq)
 - [Contributing](#contributing)
 - [Star History](#star-history)
-- [License](#license)
 
 ---
 
@@ -394,12 +393,6 @@ If you like this project:
 ⭐ Star the repository
 🍴 Fork it
 🧠 Share improvements
-
----
-
-## License
-
-MIT License
 
 ---
 
