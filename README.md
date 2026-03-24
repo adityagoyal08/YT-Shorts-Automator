@@ -299,7 +299,7 @@ run_shorts.bat
 
 ```
 @echo off
-cd C:\Users\Administratorr\Documents\aditya-trash
+cd <folder_path>
 python scheduler.py
 ```
 
