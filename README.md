@@ -167,9 +167,9 @@ H --> I[Upload to YouTube]
 ## Project Structure
 
 ```
-aditya-trash/
+Main_Folder/
 │
-├── n8n_yts_ollama.py        # Main pipeline script
+├── yts_ollama.py        # Main pipeline script
 ├── scheduler.py             # Scheduler controller
 ├── run_shorts.bat           # Windows automation runner
 │
