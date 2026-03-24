@@ -22,8 +22,8 @@
 
 ## 📚 Table of Contents
 
-- [Overview](#📖Overview)
-- [Features](#features)
+- [Overview](#Overview)
+- [🚀 Features](#features)
 - [Demo](#demo)
 - [AI Stack](#ai-stack)
 - [System Architecture](#system-architecture)
@@ -46,7 +46,7 @@
 
 ---
 
-#📖Overview
+# Overview
 
 This project is an **AI-powered YouTube automation pipeline** that:
 
