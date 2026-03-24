@@ -1,144 +1,411 @@
-***
+# 🎬 YouTube → Shorts AI Automation
 
-```markdown
-# 🎬 YouTube to Shorts — Auto Scheduler (Ollama Edition)
+<p align="center">
 
-A fully automated Python pipeline that downloads long-form YouTube videos from your favorite channels, uses AI to find the most engaging moments, clips them into YouTube Shorts, generates catchy titles, and uploads them to your YouTube account automatically. 
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![AI](https://img.shields.io/badge/AI-Ollama%20Llama3-green)
+![Whisper](https://img.shields.io/badge/Whisper-Audio%20Transcription-orange)
+![FFmpeg](https://img.shields.io/badge/FFmpeg-Video%20Processing-red)
+![yt-dlp](https://img.shields.io/badge/yt--dlp-Downloader-black)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Powered entirely by **local AI (Ollama + Llama 3.2)** and **OpenAI Whisper** for zero-cost intelligence! 🚀
+</p>
+
+<p align="center">
+
+🚀 **Fully automated AI pipeline that converts long YouTube videos into Shorts and uploads them automatically.**
+
+</p>
 
 ---
 
-## ✨ Features
-* **📥 Auto-Download:** Scrapes target channels and downloads videos using `yt-dlp`.
-* **🎙️ Smart Transcription:** Uses `Whisper` to transcribe video audio (auto-detects languages like Hindi, English, etc.).
-* **🤖 Local AI Clipping:** Prompts a local `Ollama` instance (`llama3.2:latest`) to identify the most viral/engaging moments (includes a fallback safety mechanism if AI fails).
-* **✂️ Auto-Editing:** Uses `FFmpeg` to cut the selected moments into vertical Shorts-ready formats.
-* **📝 AI Metadata Generation:** Ollama automatically generates engaging titles with emojis (e.g., *😍 Can 5 Girls Impressed Him? 🤔*).
-* **📤 Auto-Upload:** Authenticates via Google API and uploads the generated Shorts directly to your YouTube channel.
-* **⏰ Fully Scheduled:** Integrates with Windows Task Scheduler for hands-off operation (e.g., 9 AM & 9 PM daily).
+# 📚 Table of Contents
+
+* Overview
+* Features
+* Demo
+* Architecture
+* Pipeline Workflow
+* Project Structure
+* Installation
+* Setup
+* Running the Automation
+* Scheduler Automation
+* Example Output
+* Future Improvements
+* Contributing
+* License
 
 ---
 
-## 📂 Project Structure
+# 📖 Overview
 
-```text
+This project is an **AI-powered YouTube automation pipeline** that:
+
+1. Fetches videos from YouTube channels
+2. Downloads them automatically
+3. Transcribes the audio using **Whisper AI**
+4. Uses **Ollama (Llama3)** to detect the best moments
+5. Cuts clips using **FFmpeg**
+6. Generates titles automatically
+7. Uploads the clips to YouTube as **Shorts**
+
+Everything runs **locally on your machine**.
+
+No paid APIs.
+No external AI services.
+
+---
+
+# 🚀 Features
+
+✅ Automatic video downloading
+✅ AI transcript generation using **Whisper**
+✅ Local AI clip detection with **Ollama Llama3**
+✅ Automatic video clipping using **FFmpeg**
+✅ AI-generated titles and metadata
+✅ Uploads directly to YouTube
+✅ Fully automated using **Windows Task Scheduler**
+✅ Supports **100+ channels**
+✅ Runs **100% locally**
+
+---
+
+# 🎥 Demo
+
+Example scheduler output:
+
+```
+🎬 YouTube to Shorts — Auto Scheduler
+
+Loaded 1 channel(s)
+Videos processed so far: 3
+
+📥 Downloading video
+Title: Can 5 Girls Impress This One Guy?
+
+🎙️ Transcribing with Whisper...
+Detected language: Hindi
+Transcribed 265 segments
+
+🤖 Asking Ollama to find clip moments...
+
+✂️ Cutting: 30s → 85s
+Saved: short_01.mp4
+
+📝 Generating metadata...
+
+📤 Uploading Short...
+Uploaded! https://youtube.com/shorts/YRuYCnzhrY8
+
+✅ DONE
+```
+
+---
+
+# 🧠 AI Stack
+
+| Tool       | Purpose                           |
+| ---------- | --------------------------------- |
+| Whisper    | Speech-to-text transcription      |
+| Ollama     | Local LLM runtime                 |
+| Llama3.2   | Clip detection + title generation |
+| FFmpeg     | Video processing                  |
+| yt-dlp     | YouTube downloading               |
+| Google API | Upload Shorts                     |
+
+---
+
+# 🏗 Architecture
+
+```mermaid
+flowchart LR
+
+User --> Scheduler
+Scheduler --> PythonScript
+PythonScript --> yt-dlp
+PythonScript --> Whisper
+PythonScript --> Ollama
+PythonScript --> FFmpeg
+PythonScript --> YouTubeAPI
+YouTubeAPI --> YouTubeShorts
+```
+
+---
+
+# 🧠 Pipeline Workflow
+
+```mermaid
+flowchart TD
+
+A[Scheduler Trigger] --> B[Fetch Channels]
+B --> C[Download Video yt-dlp]
+C --> D[Transcribe Audio Whisper]
+D --> E[Analyze Transcript Ollama]
+E --> F[Detect Best Clip]
+F --> G[Cut Short FFmpeg]
+G --> H[Generate Title Ollama]
+H --> I[Upload to YouTube]
+```
+
+---
+
+# 📂 Project Structure
+
+```
 aditya-trash/
-  ├── n8n_yts_ollama.py     ← Main pipeline script (Download, AI, Edit, Upload)
-  ├── scheduler.py          ← Logic to pick channels, track history, and run the pipeline
-  ├── run_shorts.bat        ← Executable batch file for Windows Task Scheduler
-  ├── channels.txt          ← List of target YouTube channels (Supports 100+ channels)
-  ├── cookies.txt           ← YouTube cookies to bypass download restrictions
-  ├── client_secret.json    ← Google API credentials (from Google Cloud / AI Studio)
-  ├── youtube_token.json    ← Saved YouTube authentication token for auto-uploads
-  └── shorts_output/        ← Auto-generated folder for temporary downloads and final clips
+│
+├── n8n_yts_ollama.py        # Main pipeline script
+├── scheduler.py             # Scheduler controller
+├── run_shorts.bat           # Windows automation runner
+│
+├── channels.txt             # Channel list
+├── cookies.txt              # YouTube cookies
+│
+├── client_secret.json       # Google API credentials
+├── youtube_token.json       # OAuth token
+│
+└── shorts_output/           # Generated shorts
 ```
 
 ---
 
-## 🛠️ Prerequisites & Installation
+# ⚙️ Installation
 
-### 1. System Dependencies
-Ensure the following are installed and added to your system's `PATH`:
-* **Python 3.10+**
-* **[FFmpeg](https://ffmpeg.org/download.html)** (Required for video editing and audio extraction)
-* **[Ollama](https://ollama.com/)** (Running locally)
+### Install Python dependencies
 
-### 2. Pull the Local AI Model
-Open your terminal and pull the Llama 3.2 model:
-```bash
-ollama run llama3.2:latest
 ```
-
-### 3. Install Python Packages
-```bash
-pip install yt-dlp openai-whisper google-api-python-client google-auth-oauthlib google-auth-httplib2
+pip install yt-dlp
+pip install openai-whisper
+pip install google-api-python-client
+pip install google-auth-httplib2
+pip install google-auth-oauthlib
 ```
-
-### 4. Setup Authentication & Config Files
-1. **`channels.txt`**: Add the YouTube channel URLs you want to monitor.
-   ```text
-   [https://www.youtube.com/@FilterCopy/videos](https://www.youtube.com/@FilterCopy/videos)
-   [https://www.youtube.com/@BBKiVines/videos](https://www.youtube.com/@BBKiVines/videos)
-   [https://www.youtube.com/@CarryMinati/videos](https://www.youtube.com/@CarryMinati/videos)
-   ```
-2. **`cookies.txt`**: Export your YouTube cookies using a browser extension (like *Get cookies.txt LOCALLY*) and save them here to prevent `yt-dlp` from being blocked.
-3. **`client_secret.json`**: Get your OAuth 2.0 Client IDs from the [Google Cloud Console](https://console.cloud.google.com/) (Ensure the YouTube Data API v3 is enabled).
-4. **`youtube_token.json`**: This will be generated automatically the first time you run the script and authenticate via your browser.
 
 ---
 
-## ⚙️ How It Works (The Flow)
+### Install FFmpeg
 
-When the script runs, it follows this exact execution pipeline:
-1. **Check Dependencies:** Verifies FFmpeg, yt-dlp, Whisper, Ollama, and Google APIs.
-2. **Fetch Video:** Selects a target channel from `channels.txt` and downloads a recent video.
-3. **Transcribe:** Whisper transcribes the full video and creates timestamps.
-4. **AI Clip Selection:** The transcript is sent to local Llama 3.2 via Ollama to find the best 30-60 second segments. *(Fallback: If Ollama fails to find a valid clip, it safely slices clips every 60 seconds).*
-5. **Video Processing:** FFmpeg cuts the video and formats it.
-6. **Metadata & Upload:** Ollama generates a catchy title, and the Google API uploads it directly to YouTube Shorts!
+Download from:
+
+[https://ffmpeg.org/download.html](https://ffmpeg.org/download.html)
+
+Add FFmpeg to system **PATH**.
 
 ---
 
-## ⏰ Automation Setup (Windows Task Scheduler)
+### Install Ollama
 
-Set this up once, and your PC will run a fully automated YouTube Shorts factory.
+Download:
 
-### Step 1: Create the Batch File
-Ensure `run_shorts.bat` has the following code:
-```bat
+[https://ollama.com](https://ollama.com)
+
+Run model:
+
+```
+ollama run llama3.2
+```
+
+---
+
+# 🔐 Google API Setup
+
+1. Go to **Google Cloud Console**
+2. Enable **YouTube Data API v3**
+3. Create OAuth credentials
+4. Download credentials JSON
+
+Save as:
+
+```
+client_secret.json
+```
+
+First run generates:
+
+```
+youtube_token.json
+```
+
+---
+
+# 🍪 Add YouTube Cookies
+
+Some videos require login.
+
+Export cookies using browser extension:
+
+**Get cookies.txt**
+
+Save as:
+
+```
+cookies.txt
+```
+
+---
+
+# 📺 Add Channels
+
+Edit:
+
+```
+channels.txt
+```
+
+Example:
+
+```
+https://www.youtube.com/@BBKiVines/videos
+https://www.youtube.com/@CarryMinati/videos
+https://www.youtube.com/@FilterCopy/videos
+```
+
+Supports **100+ channels**.
+
+---
+
+# ▶ Running the Pipeline
+
+Run manually:
+
+```
+python scheduler.py
+```
+
+---
+
+# ⏰ Automate with Windows Task Scheduler
+
+Create batch file:
+
+```
+run_shorts.bat
+```
+
+```
 @echo off
 cd C:\Users\Administratorr\Documents\aditya-trash
 python scheduler.py
 ```
 
-### Step 2: Open Task Scheduler
-Press `Win + S` → search **Task Scheduler** → Open it.
+Create tasks:
 
-### Step 3: Create Morning Task (9:00 AM)
-1. Click **Create Basic Task** (Right panel).
-2. **Name:** `YouTube Shorts Morning`
-3. **Trigger:** `Daily` → Start: `9:00 AM`
-4. **Action:** `Start a program`
-   * **Program/script:** Browse to `C:\Users\Administratorr\Documents\aditya-trash\run_shorts.bat`
-5. Click **Finish**.
+| Task    | Time    |
+| ------- | ------- |
+| Morning | 9:00 AM |
+| Evening | 9:00 PM |
 
-### Step 4: Create Evening Task (9:00 PM)
-Repeat Step 3, but use:
-* **Name:** `YouTube Shorts Evening`
-* **Trigger:** `Daily` → Start: `9:00 PM`
+Program:
 
-### Step 5: Prevent PC from Sleeping
-Your PC must be awake for the tasks to trigger:
-1. Press `Win + S` → search **Power & Sleep settings**.
-2. Under **Sleep**, set *When plugged in, PC goes to sleep after* to **Never**.
-
----
-
-## 📝 Example Output Log
-```text
-🔍 Checking dependencies...
-✅ FFmpeg found
-✅ yt-dlp found
-✅ whisper found
-✅ Ollama running with model: llama3.2:latest
-✅ google-api-python-client found
-...
-✅ Downloaded the video
-✅ Whisper transcribed 162 segments, detected Hindi
-✅ Ollama picked clip moments
-✅ FFmpeg cut short_01.mp4 (7.0 MB)
-✅ Ollama generated titles
-✅ Uploaded! [https://youtube.com/shorts/YRuYCnzhrY8](https://youtube.com/shorts/YRuYCnzhrY8)
-============================================================
-  ✅ DONE!
-============================================================
+```
+run_shorts.bat
 ```
 
 ---
 
-## ⚠️ Disclaimer
-* Make sure you have the right to repurpose and upload the videos you are downloading.
-* This tool is intended for educational purposes and personal channel automation. 
-* Keep your `client_secret.json`, `cookies.txt`, and `youtube_token.json` completely private! Add them to your `.gitignore`.
+# 📂 Output Files
+
+Generated shorts stored in:
+
 ```
+shorts_output/
+```
+
+Example:
+
+```
+shorts_output/
+   └── NPsfgznkTBA/
+        ├── short_01.mp4
+        ├── results.json
+        └── transcript.txt
+```
+
+---
+
+# 📊 Example Generated Short
+
+Title:
+
+```
+😍 Can 5 Girls Impress Him? 🤔
+```
+
+Duration:
+
+```
+55 seconds
+```
+
+Video:
+
+```
+https://youtube.com/shorts/YRuYCnzhrY8
+```
+
+---
+
+# 🛠 Future Improvements
+
+Planned upgrades:
+
+* Auto captions for Shorts
+* AI vertical cropping
+* Thumbnail generator
+* Multi-channel upload
+* n8n workflow integration
+* Automatic posting schedule
+* Viral clip detection
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+Steps:
+
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+# ⭐ Support
+
+If you like this project:
+
+⭐ Star the repository
+🍴 Fork it
+🧠 Share improvements
+
+---
+
+# 📜 License
+
+MIT License
+
+---
+
+# 🙌 Acknowledgements
+
+Libraries used:
+
+* yt-dlp
+* openai-whisper
+* FFmpeg
+* Ollama
+* google-api-python-client
+
+---
+
+If you want, I can also show you **3 things that make repos explode in stars**:
+
+* 🔥 **AI-generated architecture image**
+* 🔥 **README banner like big tech projects**
+* 🔥 **Auto-generated demo GIF pipeline**
+
+Those **dramatically increase GitHub engagement.**
