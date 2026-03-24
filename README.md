@@ -23,7 +23,7 @@
 ## 📚 Table of Contents
 
 - [Overview](#Overview)
-- [🚀 Features](#features)
+- [Features](#features)
 - [Demo](#demo)
 - [AI Stack](#ai-stack)
 - [System Architecture](#system-architecture)
@@ -46,7 +46,7 @@
 
 ---
 
-# Overview
+## Overview
 
 This project is an **AI-powered YouTube automation pipeline** that:
 
@@ -65,7 +65,7 @@ No external AI services.
 
 ---
 
-# 🚀 Features
+## Features
 
 ✅ Automatic video downloading
 ✅ AI transcript generation using **Whisper**
