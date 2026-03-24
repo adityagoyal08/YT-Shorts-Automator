@@ -67,15 +67,15 @@ No external AI services.
 
 ## Features
 
-✅ Automatic video downloading
-✅ AI transcript generation using **Whisper**
-✅ Local AI clip detection with **Ollama Llama3**
-✅ Automatic video clipping using **FFmpeg**
-✅ AI-generated titles and metadata
-✅ Uploads directly to YouTube
-✅ Fully automated using **Windows Task Scheduler**
-✅ Supports **100+ channels**
-✅ Runs **100% locally**
+- Automatic video downloading
+- AI transcript generation using **Whisper**
+- Local AI clip detection with **Ollama Llama3**
+- Automatic video clipping using **FFmpeg**
+- AI-generated titles and metadata
+- Uploads directly to YouTube
+- Fully automated using **Windows Task Scheduler**
+- Supports **100+ channels**
+- Runs **100% locally**
 
 ---
 
