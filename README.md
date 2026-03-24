@@ -20,22 +20,29 @@
 
 ---
 
-# 📚 Table of Contents
+## 📚 Table of Contents
 
-* Overview
-* Features
-* Demo
-* Architecture
-* Pipeline Workflow
-* Project Structure
-* Installation
-* Setup
-* Running the Automation
-* Scheduler Automation
-* Example Output
-* Future Improvements
-* Contributing
-* License
+- [Overview](#overview)
+- [Features](#features)
+- [Demo](#demo)
+- [AI Stack](#ai-stack)
+- [System Architecture](#system-architecture)
+- [Pipeline Workflow](#pipeline-workflow)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Google API Setup](#google-api-setup)
+- [Add YouTube Cookies](#add-youtube-cookies)
+- [Add Channels](#add-channels)
+- [Running the Pipeline](#running-the-pipeline)
+- [Automation with Task Scheduler](#automation-with-task-scheduler)
+- [Output Files](#output-files)
+- [Example Generated Short](#example-generated-short)
+- [Future Improvements](#future-improvements)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [Star History](#star-history)
+- [License](#license)
 
 ---
 
