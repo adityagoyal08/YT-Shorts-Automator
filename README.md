@@ -1,5 +1,5 @@
 # 🎬 YouTube → Shorts AI Automation
-
+![Project Banner](assets/banner.png)
 <p align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
