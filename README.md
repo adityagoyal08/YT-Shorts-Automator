@@ -79,7 +79,7 @@ No external AI services.
 
 ---
 
-# 🎥 Demo
+## Demo
 
 Example scheduler output:
 
@@ -111,7 +111,7 @@ Uploaded! https://youtube.com/shorts/YRuYCnzhrY8
 
 ---
 
-# 🧠 AI Stack
+## AI Stack
 
 | Tool       | Purpose                           |
 | ---------- | --------------------------------- |
@@ -124,7 +124,7 @@ Uploaded! https://youtube.com/shorts/YRuYCnzhrY8
 
 ---
 
-# 🏗 Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -141,7 +141,7 @@ YouTubeAPI --> YouTubeShorts
 
 ---
 
-# 🧠 Pipeline Workflow
+## Pipeline Workflow
 
 ```mermaid
 flowchart TD
@@ -158,7 +158,7 @@ H --> I[Upload to YouTube]
 
 ---
 
-# 📂 Project Structure
+## Project Structure
 
 ```
 aditya-trash/
@@ -178,7 +178,7 @@ aditya-trash/
 
 ---
 
-# ⚙️ Installation
+## Installation
 
 ### Install Python dependencies
 
@@ -216,7 +216,7 @@ ollama run llama3.2
 
 ---
 
-# 🔐 Google API Setup
+## Google API Setup
 
 1. Go to **Google Cloud Console**
 2. Enable **YouTube Data API v3**
@@ -237,7 +237,7 @@ youtube_token.json
 
 ---
 
-# 🍪 Add YouTube Cookies
+## Add YouTube Cookies
 
 Some videos require login.
 
@@ -253,7 +253,7 @@ cookies.txt
 
 ---
 
-# 📺 Add Channels
+## Add Channels
 
 Edit:
 
@@ -273,7 +273,7 @@ Supports **100+ channels**.
 
 ---
 
-# ▶ Running the Pipeline
+## Running the Pipeline
 
 Run manually:
 
@@ -283,7 +283,7 @@ python scheduler.py
 
 ---
 
-# ⏰ Automate with Windows Task Scheduler
+## Automate with Windows Task Scheduler
 
 Create batch file:
 
@@ -312,7 +312,7 @@ run_shorts.bat
 
 ---
 
-# 📂 Output Files
+## Output Files
 
 Generated shorts stored in:
 
@@ -332,7 +332,7 @@ shorts_output/
 
 ---
 
-# 📊 Example Generated Short
+## Example Generated Short
 
 Title:
 
@@ -354,7 +354,7 @@ https://youtube.com/shorts/YRuYCnzhrY8
 
 ---
 
-# 🛠 Future Improvements
+## Future Improvements
 
 Planned upgrades:
 
@@ -368,7 +368,7 @@ Planned upgrades:
 
 ---
 
-# 🤝 Contributing
+## Contributing
 
 Contributions are welcome!
 
@@ -381,7 +381,7 @@ Steps:
 
 ---
 
-# ⭐ Support
+## Support
 
 If you like this project:
 
@@ -391,13 +391,13 @@ If you like this project:
 
 ---
 
-# 📜 License
+## License
 
 MIT License
 
 ---
 
-# 🙌 Acknowledgements
+## Acknowledgements
 
 Libraries used:
 
@@ -406,13 +406,3 @@ Libraries used:
 * FFmpeg
 * Ollama
 * google-api-python-client
-
----
-
-If you want, I can also show you **3 things that make repos explode in stars**:
-
-* 🔥 **AI-generated architecture image**
-* 🔥 **README banner like big tech projects**
-* 🔥 **Auto-generated demo GIF pipeline**
-
-Those **dramatically increase GitHub engagement.**
