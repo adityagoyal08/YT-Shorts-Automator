@@ -10,7 +10,6 @@
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-Video%20Processing-red)
 ![yt-dlp](https://img.shields.io/badge/yt--dlp-Downloader-black)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </p>
 
