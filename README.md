@@ -1,6 +1,6 @@
 # 🎬 YouTube → Shorts AI Automation
 <p align="center">
-<img src="assets/banner.png" width="100%">
+<img src="assets/banner.png" width="80%" height="80%">
 </p>
 <p align="center">
 
